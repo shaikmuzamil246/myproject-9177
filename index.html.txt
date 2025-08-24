@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mamta Bhojnalaya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      background: #fffbe0;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: #845800;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    #container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f6b435;
+      padding: 1rem;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      font-weight: bold;
+    }
+    .nav-links a {
+      margin-left: 2rem;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #ee2c2c;
+    }
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      height: 350px;
+      border-radius: 0 0 25px 25px;
+      color: #fff;
+      box-shadow: 0px 8px 15px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      background: rgba(246, 180, 53, 0.7);
+      padding: 0.5rem 1.5rem;
+      border-radius: 10px;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 500;
+      background: rgba(246, 180, 53, 0.7);
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+    }
+    main {
+      padding: 2rem 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #c08524;
+      margin-bottom: 1.3rem;
+    }
+    .about-box {
+      background: #fff9e5;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(200,133,36,0.08);
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    .about-img {
+      max-width: 95%;
+      height: auto;
+      border-radius: 16px;
+      margin: 2rem auto;
+      box-shadow: 0px 4px 20px rgba(200,133,36,0.15);
+      display: block;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 1.2rem;
+    }
+    .menu-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(192,133,36,0.08);
+      padding: 1.4rem;
+    }
+    .category-title {
+      font-size: 1.35rem;
+      color: #d97d28;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    .menu-item-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.4rem 0;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .menu-item-name {
+      font-size: 1.07rem;
+      font-weight: 600;
+    }
+    .menu-item-price {
+      font-size: 1rem;
+      margin-top: 2px;
+      color: #b8860b;
+    }
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      padding: 1.1rem;
+      background: #f8dba8;
+      color: #845800;
+      font-weight: 500;
+      border-radius: 14px 14px 0 0;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 600px) {
+      .hero-section {
+        height: 200px;
+      }
+      .menu-item-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <span style="font-weight:900; font-size:1.6rem; color:#d97d28;">Mamta Bhojnalaya</span>
+    <div class="nav-links">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('about')">About</a>
+      <a href="#" onclick="showPage('menu')">Menu</a>
+    </div>
+  </nav>
+
+  <div id="container">
+    <div id="page-content"></div>
+  </div>
+
+  <footer>
+    You're the best! Thanks for visiting Mamta Bhojnalaya.
+  </footer>
+
+  <script>
+    const menuData = [
+      {
+        category: "Paneer",
+        items: [
+          { name: "Matar Paneer", half: 80, full: 120 },
+          { name: "Kaju Paneer", half: 120, full: 170 },
+          { name: "Sahi Paneer", half: 80, full: 120 },
+          { name: "Chola Paneer", half: 80, full: 120 },
+          { name: "Kaju Kari", half: 100, full: 150 },
+        ],
+      },
+      {
+        category: "Dal",
+        items: [
+          { name: "Dal Fry", half: 60, full: 90 },
+          { name: "Dak Tadka", half: 70, full: 100 },
+          { name: "Dal Paneer", half: 70, full: 100 },
+        ],
+      },
+      {
+        category: "Rice",
+        items: [
+          { name: "Plain Rice", half: 30, full: 50 },
+          { name: "Jeera Rice", half: 40, full: 60 },
+          { name: "Masala Rice", half: 50, full: 70 },
+          { name: "Lapeta", half: 60, full: 90 },
+        ],
+      },
+      {
+        category: "Sabji",
+        items: [
+          { name: "Sev Masala", half: 60, full: 90 },
+          { name: "Sev Bhaji", half: 70, full: 100 },
+          { name: "Sev Tamatar", half: 70, full: 100 },
+          { name: "Tamatar Masala", half: 60, full: 90 },
+          { name: "Tamatar Chatni", half: 70, full: 100 },
+          { name: "Khadi Pakoda", half: 60, full: 90 },
+          { name: "Khadi Tadka", half: 70, full: 100 },
+        ],
+      },
+      {
+        category: "Roti",
+        items: [
+          { name: "Tawa Roti", price: 6 },
+          { name: "Tawa Butter Roti", price: 8 },
+          { name: "Tandoori Roti", price: 7 },
+          { name: "Tandoori Butter Roti", price: 8 },
+          { name: "Lachha Paratha", price: 25 },
+        ],
+      },
+      {
+        category: "Other",
+        items: [
+          { name: "Papad Dry", price: 20 },
+          { name: "Papad Masala", price: 30 },
+          { name: "Bati", price: 10 },
+          { name: "Dahi", price: "30/50" },
+          { name: "Water Bottle", price: "10/20" },
+        ],
+      },
+    ];
+
+    function showPage(page) {
+      let content = '';
+      if (page === "home") {
+        content = `
+          <div class="hero-section">
+            <div class="hero-title">Welcome to Mamta Bhojnalaya</div>
+            <div class="hero-subtitle">
+              Delicious, home-style Indian cuisine served with love. Experience the flavors of India in a warm, welcoming atmosphere.
+            </div>
+          </div>
+          <main>
+            <div class="section-title">Our Specialties</div>
+            <div class="menu-grid">
+              ${menuData.slice(0, 3).map(category =>
+                `<div class="menu-card">
+                  <div class="category-title">${category.category}</div>
+                  ${category.items.slice(0, 2).map(item =>
+                    `<div class="menu-item-grid">
+                      <div>
+                        <div class="menu-item-name">${item.name}</div>
+                        <div class="menu-item-price">${
+                          item.half && item.full ? `Half: ₹${item.half} | Full: ₹${item.full}` : `₹${item.price}`
+                        }</div>
+                      </div>
+                    </div>`
+                  ).join('')}
+                </div>`
+              ).join('')}
+            </div>
+          </main>
+        `;
+      } else if (page === "about") {
+        content = `
+          <main>
+            <div class="section-title">About Us</div>
+            <div class="about-box">
+              <p>
+                <b>Mamta Bhojnalaya</b> is a family-owned restaurant dedicated to serving authentic Indian dishes in a homely, friendly environment. We use traditional recipes, fresh ingredients, and plenty of love in every meal we prepare. Whether you're enjoying a casual dinner or celebrating a special occasion, our team ensures you feel at home.
+              </p>
+              <p>
+                Our ambiance is inspired by cozy Indian dhabas, with warm lighting, comfortable seating, and tasteful décor that celebrates the vibrant culture of India.
+              </p>
+              <img src="https://images.unsplash.com/photo-1519864601410-dcbf6fffa3d8?auto=format&fit=crop&w=800&q=80" alt="Restaurant Ambiance" class="about-img" />
+              <p>
+                We believe in good food, good mood, and great hospitality. Visit Mamta Bhojnalaya for a memorable meal and let us delight your taste buds!
+              </p>
+            </div>
+          </main>
+        `;
+      } else if (page === "menu") {
+        content = `
+          <main>
+            <div class="section-title">Menu & Pricing</div>
+            <div class="menu-grid">
+              ${menuData.map(category =>
+                `<div class="menu-card">
+                  <div class="category-title">${category.category}</div>
+                  ${category.items.map(item =>
+                    `<div class="menu-item-grid">
+                      <div>
+                        <div class="menu-item-name">${item.name}</div>
+                        <div class="menu-item-price">${
+                          item.half && item.full ? `Half: ₹${item.half} | Full: ₹${item.full}` : `₹${item.price}`
+                        }</div>
+                      </div>
+                    </div>`
+                  ).join('')}
+                </div>`
+              ).join('')}
+            </div>
+          </main>
+        `;
+      }
+      document.getElementById('page-content').innerHTML = content;
+    }
+
+    // Show home on load
+    showPage('home');
+  </script>
+</body>
+</html>
